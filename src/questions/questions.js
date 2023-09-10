@@ -29,8 +29,9 @@ export default [
    },
    {
       type: "input",
-      name: "license",
-      message: "License",
+      name: "command",
+      message: "Command",
+      default: "npm run dev",
    },
    {
       type: "input",
@@ -40,8 +41,13 @@ export default [
    },
    {
       type: "input",
-      name: "githubName",
+      name: "githubUserName",
       message: "GitHub username?",
       default: getGitUsername(),
+   },
+   {
+      type: "input",
+      name: "linkedinUserName",
+      message: "Linkedin username? (in/@)",
    },
 ];

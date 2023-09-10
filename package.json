@@ -1,16 +1,19 @@
 {
    "name": "readme-generator",
    "version": "1.0.0",
-   "description": "",
+   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita ipsum quaerat et a voluptate modi necessitatibus quisquam in maxime.",
    "main": "src/main.js",
    "type": "module",
+   "keywords": [],
+   "author": "Nurullah Nergiz",
+   "license": "ISC",
+   "scripts": {
+      "dev": "node --watch ."
+   },
    "dependencies": {
       "inquirer": "^9.2.11"
    },
-   "scripts": {
-      "dev": "node . --watch"
-   },
-   "keywords": [],
-   "author": "",
-   "license": "ISC"
+   "devDependencies": {
+      "@types/node": "^20.6.0"
+   }
 }

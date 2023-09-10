@@ -1,5 +1,6 @@
 import inquirer from "inquirer";
 import questions from "./questions/default.js";
+import writeFile from "./utils/writeFile.js";
 
 async function main() {
    // console.clear();
@@ -7,7 +8,8 @@ async function main() {
 
    const answers = await inquirer.prompt(questions);
 
-   console.log({ ...answers });
+   // console.log({ ...answers });
+   writeFile(answers);
 }
 
 main();
