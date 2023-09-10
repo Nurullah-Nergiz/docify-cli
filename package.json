@@ -1,0 +1,16 @@
+{
+   "name": "readme-generator",
+   "version": "1.0.0",
+   "description": "",
+   "main": "src/main.js",
+   "type": "module",
+   "dependencies": {
+      "inquirer": "^9.2.11"
+   },
+   "scripts": {
+      "dev": "node . --watch"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC"
+}
