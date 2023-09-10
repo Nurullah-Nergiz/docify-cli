@@ -3,12 +3,11 @@ import questions from "./questions/default.js";
 import writeFile from "./utils/writeFile.js";
 
 async function main() {
-   // console.clear();
+   console.clear();
    console.log("Readme Generator");
 
    const answers = await inquirer.prompt(questions);
 
-   // console.log({ ...answers });
    writeFile(answers);
 }
 

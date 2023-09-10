@@ -1,14 +1,27 @@
 {
-   "name": "readme-generator",
-   "version": "1.0.0",
-   "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat expedita ipsum quaerat et a voluptate modi necessitatibus quisquam in maxime.",
+   "name": "cli-readme-generator",
+   "version": "1.0.4",
+   "description": "The CLI README Generator is a powerful command-line tool designed to simplify the process of creating and maintaining high-quality README files for your software projects. A well-crafted README is essential for effectively conveying information about your project to potential users and contributors. With this tool, you can streamline the README creation process and ensure your projects have professional and informative documentation.",
    "main": "src/main.js",
    "type": "module",
-   "keywords": [],
+   "homepage": "https://nurullahnergiz.com/projects/cli-readme-generator/master",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/Nurullah-Nergiz/cli-readme-generator"
+   },
+   "keywords": [
+      "readme",
+      "generator",
+      "cli",
+      "cli-readme-generator"
+   ],
    "author": "Nurullah Nergiz",
    "license": "ISC",
    "scripts": {
       "dev": "node --watch ."
+   },
+   "bin": {
+      "cli-readme-generator": "./src/main.js"
    },
    "dependencies": {
       "inquirer": "^9.2.11"
