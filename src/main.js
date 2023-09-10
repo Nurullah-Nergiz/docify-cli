@@ -4,10 +4,9 @@ import writeFile from "./utils/writeFile.js";
 
 async function main() {
    console.clear();
-   console.log("Readme Generator");
+   console.log("Cli Readme Generator App");
 
    const answers = await inquirer.prompt(questions);
-
    writeFile(answers);
 }
 

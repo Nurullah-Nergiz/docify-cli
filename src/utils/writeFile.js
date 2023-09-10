@@ -3,7 +3,7 @@ import defaultData from "./defaultData.js";
 
 const writeFile = (answers) => {
    writeFileSync(
-      process.cwd() + "/Readme.md",
+      process.cwd() + "/README.md",
       [
          "\n",
          `# ${answers.name}`,
