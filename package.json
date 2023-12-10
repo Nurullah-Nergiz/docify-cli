@@ -1,6 +1,6 @@
 {
    "name": "cli-readme-generator",
-   "version": "1.0.4",
+   "version": "1.0.6",
    "description": "The CLI README Generator is a powerful command-line tool designed to simplify the process of creating and maintaining high-quality README files for your software projects. A well-crafted README is essential for effectively conveying information about your project to potential users and contributors. With this tool, you can streamline the README creation process and ensure your projects have professional and informative documentation.",
    "main": "src/main.js",
    "type": "module",
@@ -26,8 +26,13 @@
    "bin": {
       "cli-readme-generator": "./src/main.js"
    },
-   "dependencies": {},
+   "dependencies": {
+      "chalk": "^5.3.0",
+      "ora": "^7.0.1",
+      "prompts": "^2.4.2"
+   },
    "devDependencies": {
-      "@types/node": "^20.6.0"
+      "@types/node": "^20.6.0",
+      "@types/prompts": "^2.4.9"
    }
 }
