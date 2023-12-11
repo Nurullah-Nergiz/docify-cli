@@ -10,20 +10,31 @@ The CLI README Generator is a powerful command-line tool designed to simplify th
 npx cli-readme-generator
 ```
 
-v18.16.0
+Recommended NodeJS Version [v18.16.0](https://nodejs.org/dist/v18.16.0)
+
+## Dependencies
+
+    chalk: ^5.3.0;
+    ora: ^7.0.1;
+    prompts: ^2.4.2;
+
+## Dependencies
+
+    @types/node: ^20.6.0;
+    @types/prompts: ^2.4.9;
 
 ---
 
 ## Author
 
- - Nurullah Nergiz
+-  Nurullah Nergiz
 
-- ![Website](https://img.shields.io/website?url=https://nurullahnergiz.com&up_message=visit&up_color=%23fff&link=https://nurullahnergiz.com)
+-  ![Website](https://img.shields.io/website?url=https://nurullahnergiz.com/&up_message=visit&up_color=%23fff&link=https://nurullahnergiz.com/)
 
-- [![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/Nurullah-Nergiz)
+-  [![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/Nurullah-Nergiz)
 
-- [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/nurullahNergiz_)
+-  [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/nurullahNergiz_)
 
-- [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/in/nurullah-nergiz)
+-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/in/nurullah-nergiz)
 
-- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@nurullahnergiz)
+-  [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@nurullahnergiz)

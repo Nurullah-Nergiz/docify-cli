@@ -1,7 +1,7 @@
-import defaultData from '../utils/defaultData.js';
-import getGitUsername from '../utils/getGitUserName.js';
+import defaultData from '../utils/defaultData.js'
+import getGitUsername from '../utils/getGitUserName.js'
 
-const {description, name, version, homepage, author} = defaultData;
+const {description, name, author, dependencies, devDependencies} = defaultData
 
 export default [
    {
@@ -29,8 +29,19 @@ export default [
       name: 'nodeVersion',
       message: 'Recommended NodeJS Version?',
       initial: process.version,
-      format: (val) =>
-         `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})`,
+      format: (val) => {
+         return (
+            `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})\n\n` +
+            `## Dependencies\n\n\t` +
+            [...Object.entries(dependencies)].map(([key, val]) => {
+               return `${key}: ${val};\n\t`
+            }) +
+            `\n## Dependencies\n\n\t` +
+            [...Object.entries(devDependencies)].map(([key, val]) => {
+               return `${key}: ${val};\n\t`
+            })
+         ).replaceAll(',', '')
+      },
    },
    {
       type: 'text',
@@ -100,4 +111,4 @@ export default [
       message: 'Name a topping',
       initial: 'aasd',
    },
-];
+]
