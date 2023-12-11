@@ -15,6 +15,6 @@ import writeFile from './utils/writeFile.js';
    const res = await prompts(questions);
 
    console.log('res', res);
-   writeFile(Object.values(res).filter((ans) => ans.trim() != ''));
+   writeFile(Object.values(res).filter((ans) => ans?.trim() != ''));
    // => response => { username, age, about }
 })();
