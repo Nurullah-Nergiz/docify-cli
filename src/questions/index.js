@@ -29,8 +29,8 @@ export default [
       name: 'nodeVersion',
       message: 'Recommended NodeJS Version?',
       initial: process.version,
-      // format: (val) =>
-      //    `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})`,
+      format: (val) =>
+         `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})`,
    },
    {
       type: 'text',
