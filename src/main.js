@@ -2,21 +2,18 @@ import chalk from 'chalk'
 import prompts from 'prompts'
 import questions from './questions/index.js'
 import writeFile from './utils/writeFile.js'
-// import ora from 'ora';
-// import getDefaultData from './utils/defaultData.js';
+
+// App init
 ;(async () => {
    console.clear()
-   console.log(chalk.hex('#1e90ff')('Cli-readme-generator'))
-   // const spinner = ora('Loading package.json').start();
-
-   // setTimeout(() => spinner.succeed('loaded'), 1000);
+   console.log(chalk.hex('#1e90ff')('Docify - Documentation Generation Tool'))
 
    // @ts-ignore
-   const res = await prompts(questions)
-
+   const res = await prompts(questions, {
+      onCancel: () => process.exit(),
+   })
    writeFile(
       Object.values(res).filter((ans) => ans?.trim() != ''),
       res,
    )
-   // => response => { username, age, about }
 })()

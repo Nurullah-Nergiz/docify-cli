@@ -1,7 +1,7 @@
 import defaultData from '../utils/defaultData.js'
 import getGitUsername from '../utils/getGitUserName.js'
 
-const {description, name, author, dependencies, devDependencies} = defaultData
+const { description, name, author, dependencies, devDependencies } = defaultData
 
 export default [
    {
@@ -94,7 +94,7 @@ export default [
    {
       type: 'text',
       name: 'twitter',
-      message: 'Twitter (X))',
+      message: 'Twitter (X)',
       format: (val) =>
          val.trim() != ''
             ? `- [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/${val})`

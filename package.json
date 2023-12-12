@@ -1,7 +1,7 @@
 {
-   "name": "cli-readme-generator",
-   "version": "1.0.6",
-   "description": "The CLI README Generator is a powerful command-line tool designed to simplify the process of creating and maintaining high-quality README files for your software projects. A well-crafted README is essential for effectively conveying information about your project to potential users and contributors. With this tool, you can streamline the README creation process and ensure your projects have professional and informative documentation.",
+   "name": "docify",
+   "version": "0.0.1",
+   "description": "The Docify CLI README Generator is a powerful command-line tool meticulously designed to simplify the creation and maintenance of high-quality README files for your software projects. Crafting a comprehensive README is crucial for effectively conveying information about your project to potential users and contributors. With the Docify CLI README Generator, you can effortlessly streamline the README creation process, ensuring your projects boast professional and informative documentation. Dive into the world of seamless documentation with the Docify CLI README Generator, making project management and communication a breeze.",
    "main": "src/main.js",
    "type": "module",
    "homepage": "https://nurullahnergiz.com/projects/cli-readme-generator/master",
@@ -10,13 +10,26 @@
       "url": "https://github.com/Nurullah-Nergiz/cli-readme-generator"
    },
    "keywords": [
+      "docify",
+      "documentation",
       "readme",
       "generator",
-      "cli",
-      "cli-readme-generator",
+      "command-line tool",
+      "project management",
+      "software development",
+      "markdown",
+      "documentation tool",
+      "project documentation",
+      "developer tools",
+      "open source",
+      "code documentation",
+      "readme generation",
+      "project communication",
+      "project showcase",
+      "software engineering",
+      "project collaboration",
       "Nurullah",
-      "Nergiz",
-      ""
+      "Nergiz"
    ],
    "author": "Nurullah Nergiz",
    "license": "ISC",
@@ -24,7 +37,7 @@
       "dev": "node --watch ."
    },
    "bin": {
-      "cli-readme-generator": "./src/main.js"
+      "docify": "./src/main.js"
    },
    "dependencies": {
       "chalk": "^5.3.0",
