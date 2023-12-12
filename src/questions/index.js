@@ -22,6 +22,21 @@ export default [
       name: 'download',
       message: 'Download',
       initial: `npm install ${name}`,
+      format: (val) =>
+         val.trim() != ''
+            ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
+            : '',
+   },
+   {
+      type: 'text',
+      name: 'usage',
+      message: 'Usage',
+      initial: `import ${name
+         .split('-')
+         .map((n, i) =>
+            i !== 0 ? n[0].toUpperCase() + n.substring(1).toLowerCase() : n,
+         )
+         .join('')} from '${name}';`,
       format: (val) => `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``,
    },
    {
@@ -31,16 +46,22 @@ export default [
       initial: process.version,
       format: (val) => {
          return (
-            `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})\n\n` +
-            `## Dependencies\n\n\t` +
-            [...Object.entries(dependencies)].map(([key, val]) => {
-               return `${key}: ${val};\n\t`
-            }) +
-            `\n## Dependencies\n\n\t` +
-            [...Object.entries(devDependencies)].map(([key, val]) => {
-               return `${key}: ${val};\n\t`
-            })
-         ).replaceAll(',', '')
+            (
+               val.trim() != ''
+                  ? `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})\n\n`
+                  : '' +
+                    `## Dependencies\n\n\t` +
+                    [...Object.entries(dependencies)].map(([key, val]) => {
+                       return `${key}: ${val};\n\t`
+                    }) +
+                    `\n## Dependencies\n\n\t` +
+                    [...Object.entries(devDependencies)].map(([key, val]) => {
+                       return `${key}: ${val};\n\t`
+                    })
+            )
+               // @ts-ignore
+               .replaceAll(',', '')
+         )
       },
    },
    {
@@ -48,7 +69,8 @@ export default [
       name: 'author',
       message: 'Author',
       initial: author,
-      format: (val) => `---\n\n## Author\n\n - ${val}`,
+      format: (val) =>
+         val.trim() != '' ? `---\n\n## Author\n\n - ${val}` : '',
    },
    {
       type: 'text',
