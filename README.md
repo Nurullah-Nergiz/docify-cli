@@ -10,7 +10,20 @@ The Docify CLI README Generator is a powerful command-line tool meticulously des
 npx docify-cli
 ```
 
+![asd](media/screenshot.jpeg)
+
 Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
+
+## Dependencies
+
+    chalk: ^5.3.0,
+    ora: ^7.0.1,
+    prompts: ^2.4.2,
+
+## Dependencies
+
+    @types/node: ^20.6.0,
+    @types/prompts: ^2.4.9,
 
 ---
 
