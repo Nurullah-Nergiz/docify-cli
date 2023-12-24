@@ -4,7 +4,7 @@ import questions from './questions/index.js'
 import writeFile from './utils/writeFile.js'
 
 // App init
-;(async () => {
+export default async function init() {
    console.clear()
    console.log(chalk.hex('#1e90ff')('Docify - Documentation Generation Tool'))
 
@@ -16,4 +16,4 @@ import writeFile from './utils/writeFile.js'
       Object.values(res).filter((ans) => ans?.trim() != ''),
       res,
    )
-})()
+}
