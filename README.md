@@ -12,7 +12,7 @@ npm install docify -G
 
 ---
 
-## Download
+## Use
 
 ```bash
 docify
