@@ -7,23 +7,24 @@ The Docify CLI README Generator is a powerful command-line tool meticulously des
 ## Download
 
 ```bash
-npx docify-cli
+git clone https://github.com/Nurullah-Nergiz/cli-readme-generator
 ```
 
-![(media/screenshot.jpeg](media/screenshot.jpeg)
+![media/screenshot.jpeg](media/screenshot.jpeg)
+media/screenshot.jpeg
 
 Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
 ## Dependencies
 
-    chalk: ^5.3.0,
-    ora: ^7.0.1,
-    prompts: ^2.4.2,
+    chalk: ^5.3.0
+    ora: ^7.0.1
+    prompts: ^2.4.2
 
 ## Dependencies
 
-    @types/node: ^20.6.0,
-    @types/prompts: ^2.4.9,
+    @types/node: ^20.6.0
+    @types/prompts: ^2.4.9
 
 ---
 
@@ -31,20 +32,12 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
 -  Nurullah Nergiz
 
--  ![Website](https://img.shields.io/website?url=https://nurulllahnergiz.com/&up_message=visit&up_color=%23fff&link=https://nurulllahnergiz.com/)
-
 -  [![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/Nurullah-Nergiz)
-
--  [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/nurullahNergiz_)
-
--  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/nurullah-nergiz)
-
--  [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@nurullahnergiz)
-
----
 
 ## License
 
-![GitHub License](https://img.shields.io/github/license/Nurullah-Nergiz/docify-cli?style=social&logo=github&label=License)
+docify-cli is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-This project was generated with [docify-cli](https://www.npmjs.com/package/docify-cli).
+---
+
+This project was generated with [Docify-Cli](https://www.npmjs.com/package/docify-cli).
