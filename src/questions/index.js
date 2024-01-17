@@ -1,7 +1,8 @@
 import defaultData from '../utils/defaultData.js'
 import getGitUsername from '../utils/getGitUserName.js'
 
-const { description, name, author, dependencies, devDependencies } = defaultData
+const { description, name, author, dependencies, devDependencies, repository } =
+   defaultData
 
 export default [
    {
@@ -21,23 +22,14 @@ export default [
       type: 'text',
       name: 'download',
       message: 'Download',
-      initial: `npm install ${name}`,
+      initial: (...w) => {
+         // console.log(w)
+         return repository.url ? `git clone ${repository.url}` : ''
+      },
       format: (val) =>
          val.trim() != ''
             ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
             : '',
-   },
-   {
-      type: 'text',
-      name: 'usage',
-      message: 'Usage',
-      initial: `import ${name
-         .split('-')
-         .map((n, i) =>
-            i !== 0 ? n[0].toUpperCase() + n.substring(1).toLowerCase() : n,
-         )
-         .join('')} from '${name}';`,
-      format: (val) => `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``,
    },
    {
       type: 'text',
@@ -47,23 +39,25 @@ export default [
       format: (val) => {
          return (
             (
-               val.trim() != ''
+               (val.trim() != ''
                   ? `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})\n\n`
-                  : '' +
-                    `## Dependencies\n\n\t` +
-                    [...Object.entries(dependencies)].map(([key, val]) => {
-                       return `${key}: ${val};\n\t`
-                    }) +
-                    `\n## Dependencies\n\n\t` +
-                    [...Object.entries(devDependencies)].map(([key, val]) => {
-                       return `${key}: ${val};\n\t`
-                    })
+                  : '') +
+               `## Dependencies\n\n\t` +
+               [...Object.entries(dependencies)].map(([key, val]) => {
+                  console.log(`${key}: ${val};\n\t`)
+                  return `${key}: ${val},\n\t`
+               }) +
+               `\n## Dependencies\n\n\t` +
+               [...Object.entries(devDependencies)].map(([key, val]) => {
+                  return `${key}: ${val},\n\t`
+               })
             )
                // @ts-ignore
                .replaceAll(',', '')
          )
       },
    },
+
    {
       type: 'text',
       name: 'author',
@@ -128,9 +122,36 @@ export default [
             : '',
    },
    {
-      type: (prev) => (prev == 'pizza' ? 'text' : null),
+      type: 'select',
+      name: 'license',
+      message: 'Pick a color',
+      choices: [
+         {
+            title: 'MIT',
+            description: 'This option has a description',
+            value: 'MIT',
+         },
+         { title: 'Apache 2.0', value: 'Apache-2.0' },
+         { title: 'GPL 3.0', value: 'GPL-3.0' },
+         { title: 'GPL 3.0', value: 'GPL-3.0' },
+         { title: 'OTHER', value: 'other' },
+      ],
+      format: (val, values) => {
+         console.log(values)
+         return val !== 'other'
+            ? `## License\n${values.name.slice(
+                 1,
+              )} is licensed under the ${val} License. See the [LICENSE](LICENSE) file for more information.`
+            : ''
+      },
+   },
+   {
+      type: (prev) => (prev == '' ? 'text' : null),
       name: 'topping',
       message: 'Name a topping',
-      initial: 'aasd',
+      format: (val, values) =>
+         `## License\n${values.name.slice(
+            1,
+         )} is licensed under the ${val} License. See the [LICENSE](LICENSE) file for more information.`,
    },
 ]

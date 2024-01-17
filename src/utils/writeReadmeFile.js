@@ -1,0 +1,32 @@
+import chalk from 'chalk'
+import { writeFileSync } from 'fs'
+import ora from 'ora'
+
+/**
+ *
+ * @param {Array} answers
+ * @param {Object} res
+ * @returns void
+ */
+const createReadmeFile = (answers, res) => {
+   const spinner = ora('Creating Readme.md').start()
+
+   try {
+      writeFileSync(
+         process.cwd() + '/README.md',
+         [
+            ...answers,
+            '\n---',
+            'This project was generated with [Docify-Cli](https://www.npmjs.com/package/docify-cli).',
+         ].join('\n\n'),
+      )
+      setTimeout(() => {
+         spinner.succeed('Readme.md file created')
+         process.exit()
+      }, 300)
+   } catch (error) {
+      spinner.fail('Could not create readme.md file')
+      console.error(chalk.red('Error: '), error)
+   }
+}
+export default createReadmeFile
