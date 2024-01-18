@@ -15,7 +15,7 @@ const createReadmeFile = (answers) => {
          process.cwd() + '/README.md',
          [
             ...answers,
-            '\n---',
+            '\n',
             'This project was generated with [Docify-Cli](https://www.npmjs.com/package/docify-cli).',
          ].join('\n\n'),
       )

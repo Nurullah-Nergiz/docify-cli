@@ -1,10 +1,12 @@
 import defaultData from '../utils/defaultData.js'
 import { getFolderChoices } from '../utils/getFolderChoices.js'
 import getGitUsername from '../utils/getGitUserName.js'
-// import { PromptObject } from 'prompts'
+// @ts-ignore
+import Conf from 'conf'
 
 const { description, name, author, dependencies, devDependencies, repository } =
    defaultData
+const config = new Conf({ projectName: 'foo' })
 
 export default [
    {
@@ -24,10 +26,22 @@ export default [
       type: 'text',
       name: 'download',
       message: 'Download',
-      initial: (...w) => {
-         // console.log(w)
-         return repository.url ? `git clone ${repository.url}` : ''
-      },
+      initial: (val, values) =>
+         config.get('download')
+            ? config
+                 .get('download')
+                 .replace(
+                    `## Download
+
+\`\`\`bash`,
+                    '',
+                 )
+                 .replace('```', ``)
+                 .replace(/\n/g, '')
+                 .replace('---', '')
+            : repository.url
+            ? `git clone ${repository.url}`
+            : `git clone https://github.com/${getGitUsername()}/${values.name}`,
       format: (val) =>
          val.trim() != ''
             ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
@@ -72,7 +86,7 @@ export default [
       type: 'text',
       name: 'author',
       message: 'Author',
-      initial: author,
+      initial: author ?? config.get('author'),
       format: (val) =>
          val.trim() != '' ? `---\n\n## Author\n\n - ${val}` : '',
    },
@@ -80,6 +94,10 @@ export default [
       type: 'text',
       name: 'website',
       message: 'Website',
+      initial: config
+         .get('website')
+         .match(/link=([^\s&]+)/)[1]
+         .replace(')', ''),
       format: (val) =>
          val.trim() != ''
             ? `- ![Website](https://img.shields.io/website?url=${val}&up_message=visit&up_color=%23fff&link=${val})`
@@ -99,6 +117,14 @@ export default [
       type: 'text',
       name: 'twitter',
       message: 'Twitter (X)',
+      initial: config
+         .get('twitter')
+         .replace(
+            '[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/',
+            '',
+         )
+         .replace('- ', '')
+         .slice(0, -1),
       format: (val) =>
          val.trim() != ''
             ? `- [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/${val})`
@@ -108,6 +134,14 @@ export default [
       type: 'text',
       name: 'linkedin',
       message: 'Linkedin (in/@)',
+      initial: config
+         .get('linkedin')
+         .replace(
+            '[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/',
+            '',
+         )
+         .replace('- - ', '')
+         .slice(0, -1),
       format: (val) =>
          val.trim() != ''
             ? `- [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/${val})`
@@ -117,6 +151,14 @@ export default [
       type: 'text',
       name: 'medium',
       message: 'Medium User Name @',
+      initial: config
+         .get('medium')
+         .replace(
+            '- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@',
+            '',
+         )
+         .replace('- - ', '')
+         .slice(0, -1),
       format: (val) =>
          val.trim() != ''
             ? `- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@${val})`
@@ -126,6 +168,14 @@ export default [
       type: 'text',
       name: 'youtube',
       message: 'Youtube Chanel ID:',
+      initial: config
+         .get('youtube')
+         .replace(
+            '- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@',
+            '',
+         )
+         .replace('- - ', '')
+         .slice(0, -1),
       format: (val) =>
          val.trim() != ''
             ? `- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@${val})`
@@ -149,7 +199,7 @@ export default [
       format: (val, values) => {
          console.log(values)
          return val !== 'other'
-            ? `## License\n${values.name.slice(
+            ? `---\n## License\n${values.name.slice(
                  1,
               )} is licensed under the ${val} License. See the [LICENSE](LICENSE) file for more information.`
             : ''
@@ -160,7 +210,7 @@ export default [
       name: 'topping',
       message: 'Name a topping',
       format: (val, values) =>
-         `## License\n${values.name.slice(
+         `---\n## License\n${values.name.slice(
             1,
          )} is licensed under the ${val} License. See the [LICENSE](LICENSE) file for more information.`,
    },
