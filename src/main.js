@@ -10,6 +10,7 @@ export default async function init() {
    console.log(chalk.hex('#1e90ff')('Docify - Documentation Generation Tool'))
 
    const cacheValue = {}
+
    // @ts-ignore
    const res = await prompts(questions, {
       onCancel: () => process.exit(),
@@ -19,8 +20,5 @@ export default async function init() {
       // },
    })
    // writeCacheFile(cacheValue)
-   createReadmeFile(
-      Object.values(res).filter((ans) => ans?.trim() != ''),
-      res,
-   )
+   createReadmeFile(Object.values(res).filter((ans) => ans?.trim() != ''))
 }

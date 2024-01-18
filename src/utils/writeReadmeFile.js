@@ -5,10 +5,9 @@ import ora from 'ora'
 /**
  *
  * @param {Array} answers
- * @param {Object} res
  * @returns void
  */
-const createReadmeFile = (answers, res) => {
+const createReadmeFile = (answers) => {
    const spinner = ora('Creating Readme.md').start()
 
    try {

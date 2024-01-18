@@ -1,4 +1,8 @@
 node_modules/**/*
+.npm
+.git
+.github
+
 
 package-lock.json
 pnpm-lock.yaml

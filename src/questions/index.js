@@ -1,5 +1,7 @@
 import defaultData from '../utils/defaultData.js'
+import { getFolderChoices } from '../utils/getFolderChoices.js'
 import getGitUsername from '../utils/getGitUserName.js'
+// import { PromptObject } from 'prompts'
 
 const { description, name, author, dependencies, devDependencies, repository } =
    defaultData
@@ -30,6 +32,14 @@ export default [
          val.trim() != ''
             ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
             : '',
+   },
+   {
+      type: 'autocompleteMultiselect',
+      name: 'value',
+      message: 'Select images to display',
+      choices: getFolderChoices,
+      format: (val) => val.map((img) => `![${val}](${val})\n${val}`).join('\n'),
+      initial: 0,
    },
    {
       type: 'text',
