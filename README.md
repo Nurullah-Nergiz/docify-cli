@@ -7,20 +7,11 @@ The Docify CLI README Generator is a powerful command-line tool meticulously des
 ## Download
 
 ```bash
-git clone https://github.com/Nurullah-Nergiz/cli-readme-generator
+npx docify-cli
 ```
-
-## Use
-
-```bash
-import # docify-cli from '# docify-cli';
-```
-
----
 
 ![media/screenshot.jpeg](media/screenshot.jpeg)
 media/screenshot.jpeg
----
 
 Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
@@ -31,14 +22,15 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
  cli-table: ^0.3.11
  conf: ^12.0.0
  ora: ^7.0.1
+ pnpm: ^8.14.2
  prompts: ^2.4.2
  semver: ^7.5.4
-
-## DevDependencies
+ 
+## Dependencies
 
  @types/node: ^20.6.0
  @types/prompts: ^2.4.9
-
+ 
 ---
 
 ## Author
@@ -61,4 +53,4 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
  docify-cli is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-This project was generated with [Docify-Cli](https://www.npmjs.com/package/docify-cli).
+This project was generated with [Docify-Cli](https://www.npmjs.com/package/undefined).
