@@ -24,12 +24,12 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 	ora: ^7.0.1,
 	pnpm: ^8.14.2,
 	prompts: ^2.4.2,
-	semver: ^7.5.4,
+	semver: ^7.5.4
 	
 ## Dependencies
 
  	@types/node: ^20.6.0,
-	@types/prompts: ^2.4.9,
+	@types/prompts: ^2.4.9
 	
 
 ---
