@@ -1,3 +1,4 @@
+import { getFormatBadge, getInitialBadge } from '../utils/badge.js'
 import defaultData from '../utils/defaultData.js'
 import { getFolderChoices } from '../utils/getFolderChoices.js'
 import getGitUsername from '../utils/getGitUserName.js'
@@ -32,16 +33,17 @@ export default [
       initial: (val, values) =>
          repository?.url
             ? `git clone ${repository.url}`
-            : `git clone https://github.com/${getGitUsername()}/${
-                 values.name
-              }.git`,
+            : `git clone https://github.com/${getGitUsername}/${values.name
+                 .slice(1)
+                 .trim()}.git`,
       format: (val) =>
          val.trim() != ''
             ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
             : '',
    },
    {
-      type: () =>  getFolderChoices.length !== 0 ? 'autocompleteMultiselect' : null,
+      type: () =>
+         getFolderChoices.length !== 0 ? 'autocompleteMultiselect' : null,
       name: 'value',
       message: 'Select images to display',
       choices: getFolderChoices,
@@ -59,18 +61,18 @@ export default [
                (val.trim() != ''
                   ? `Recommended NodeJS Version [${val}](https://nodejs.org/dist/${val})\n\n`
                   : '') +
-               `## Dependencies\n\n\t` +
+               `## Dependencies\n\n \t` +
                [...Object.entries(dependencies)].map(([key, val]) => {
-                  console.log(`${key}: ${val};\n\t`)
-                  return `${key}: ${val},\n\t`
+                  return `${key}: ${val}\n\t`
                }) +
-               `\n## Dependencies\n\n\t` +
+               `\n## Dependencies\n\n \t` +
                [...Object.entries(devDependencies)].map(([key, val]) => {
-                  return `${key}: ${val},\n\t`
+                  return `${key}: ${val}\n\t`
                })
             )
                // @ts-ignore
                .replaceAll(',', '')
+               .replaceAll('\n\t', ',\n\t')
          )
       },
    },
@@ -79,7 +81,17 @@ export default [
       type: 'text',
       name: 'author',
       message: 'Author',
-      initial: author ?? config.get('author'),
+      initial: () => {
+         if (author) return author
+         else if (config.get('author'))
+            return config
+               .get('author')
+               .replaceAll('\n', '')
+               .replaceAll('-', '')
+               .slice(9)
+               .trim()
+         else return ''
+      },
       format: (val) =>
          val.trim() != '' ? `---\n\n## Author\n\n - ${val}` : '',
    },
@@ -87,95 +99,43 @@ export default [
       type: 'text',
       name: 'website',
       message: 'Website',
-      initial: config.get('website')
-         ? config
-              .get('website')
-              .match(/link=([^\s&]+)/)[1]
-              .slice(0, -1)
-         : '',
-      format: (val) =>
-         val.trim() != ''
-            ? `- ![Website](https://img.shields.io/website?url=${val}&up_message=visit&up_color=%23fff&link=${val})`
-            : '',
+      initial: getInitialBadge('website'),
+      format: (val) => getFormatBadge('website', val),
    },
    {
       type: 'text',
       name: 'githubUserName',
       message: 'GitHub Username:',
-      initial: getGitUsername(),
-      format: (val) =>
-         val.trim() != ''
-            ? `- [![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/${val})`
-            : '',
+      initial: getGitUsername ?? getInitialBadge('github'),
+      format: (val) => getFormatBadge('github', val),
    },
    {
       type: 'text',
       name: 'twitter',
       message: 'Twitter (X)',
-      initial: config.get('twitter')
-         ? config.get('twitter').slice(0, 114).replace('- ', '').slice(0, -1)
-         : '',
-      format: (val) =>
-         val.trim() != ''
-            ? `- [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/${val})`
-            : '',
+      initial: getInitialBadge('twitter'),
+      format: (val) => getFormatBadge('twitter', val),
    },
    {
       type: 'text',
       name: 'linkedin',
       message: 'Linkedin (in/@)',
-      initial: config.get('linkedin')
-         ? config
-              .get('linkedin')
-              .replace(
-                 '[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/',
-                 '',
-              )
-              .replace('- - ', '')
-              .slice(0, -1)
-         : '',
-      format: (val) =>
-         val.trim() != ''
-            ? `- [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/${val})`
-            : '',
+      initial: getInitialBadge('linkedin'),
+      format: (val) => getFormatBadge('linkedin', val),
    },
    {
       type: 'text',
       name: 'medium',
       message: 'Medium User Name @',
-      initial: config.get('medium')
-         ? config
-              .get('medium')
-              .replace(
-                 '- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@',
-                 '',
-              )
-              .replace('- - ', '')
-              .slice(0, -1)
-         : '',
-      format: (val) =>
-         val.trim() != ''
-            ? `- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@${val})`
-            : '',
+      initial: getInitialBadge('medium'),
+      format: (val) => getFormatBadge('medium', val),
    },
    {
       type: 'text',
       name: 'youtube',
       message: 'Youtube Chanel ID:',
-      initial: config.get('youtube')
-         ? config
-              .get('youtube')
-              .replace(
-                 '- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@',
-                 '',
-              )
-              .replace('- - ', '')
-              .slice(0, -1)
-         : '',
-      format: (val) =>
-         val.trim() != ''
-            ? `- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@${val})`
-            : '',
+      initial: getInitialBadge('youtube'),
+      format: (val) => getFormatBadge('youtube', val),
    },
    {
       type: 'select',
@@ -211,3 +171,5 @@ export default [
          )} is licensed under the ${val} License. See the [LICENSE](LICENSE) file for more information.`,
    },
 ]
+
+// fun

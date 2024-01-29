@@ -15,4 +15,4 @@ const getDefaultData = () => {
    }
 }
 
-export default getDefaultData()
+export default {...getDefaultData()}
