@@ -6,8 +6,11 @@ import Conf from 'conf'
 
 const { description, name, author, dependencies, devDependencies, repository } =
    defaultData
-const config = new Conf({ projectName: 'foo' })
+const config = new Conf({ projectName: 'Docify-cli' })
 
+/**
+ * @type {import('inquirer').QuestionCollection}
+ */
 export default [
    {
       type: 'text',
@@ -27,28 +30,18 @@ export default [
       name: 'download',
       message: 'Download',
       initial: (val, values) =>
-         config.get('download')
-            ? config
-                 .get('download')
-                 .replace(
-                    `## Download
-
-\`\`\`bash`,
-                    '',
-                 )
-                 .replace('```', ``)
-                 .replace(/\n/g, '')
-                 .replace('---', '')
-            : repository.url
+         repository?.url
             ? `git clone ${repository.url}`
-            : `git clone https://github.com/${getGitUsername()}/${values.name}`,
+            : `git clone https://github.com/${getGitUsername()}/${
+                 values.name
+              }.git`,
       format: (val) =>
          val.trim() != ''
             ? `---\n\n## Download\n\n\`\`\`bash\n${val}\n\`\`\``
             : '',
    },
    {
-      type: 'autocompleteMultiselect',
+      type: () =>  getFolderChoices.length !== 0 ? 'autocompleteMultiselect' : null,
       name: 'value',
       message: 'Select images to display',
       choices: getFolderChoices,
@@ -94,10 +87,12 @@ export default [
       type: 'text',
       name: 'website',
       message: 'Website',
-      initial: config
-         .get('website')
-         .match(/link=([^\s&]+)/)[1]
-         .replace(')', ''),
+      initial: config.get('website')
+         ? config
+              .get('website')
+              .match(/link=([^\s&]+)/)[1]
+              .slice(0, -1)
+         : '',
       format: (val) =>
          val.trim() != ''
             ? `- ![Website](https://img.shields.io/website?url=${val}&up_message=visit&up_color=%23fff&link=${val})`
@@ -117,14 +112,9 @@ export default [
       type: 'text',
       name: 'twitter',
       message: 'Twitter (X)',
-      initial: config
-         .get('twitter')
-         .replace(
-            '[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/',
-            '',
-         )
-         .replace('- ', '')
-         .slice(0, -1),
+      initial: config.get('twitter')
+         ? config.get('twitter').slice(0, 114).replace('- ', '').slice(0, -1)
+         : '',
       format: (val) =>
          val.trim() != ''
             ? `- [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/${val})`
@@ -134,14 +124,16 @@ export default [
       type: 'text',
       name: 'linkedin',
       message: 'Linkedin (in/@)',
-      initial: config
-         .get('linkedin')
-         .replace(
-            '[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/',
-            '',
-         )
-         .replace('- - ', '')
-         .slice(0, -1),
+      initial: config.get('linkedin')
+         ? config
+              .get('linkedin')
+              .replace(
+                 '[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/',
+                 '',
+              )
+              .replace('- - ', '')
+              .slice(0, -1)
+         : '',
       format: (val) =>
          val.trim() != ''
             ? `- [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/${val})`
@@ -151,14 +143,16 @@ export default [
       type: 'text',
       name: 'medium',
       message: 'Medium User Name @',
-      initial: config
-         .get('medium')
-         .replace(
-            '- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@',
-            '',
-         )
-         .replace('- - ', '')
-         .slice(0, -1),
+      initial: config.get('medium')
+         ? config
+              .get('medium')
+              .replace(
+                 '- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@',
+                 '',
+              )
+              .replace('- - ', '')
+              .slice(0, -1)
+         : '',
       format: (val) =>
          val.trim() != ''
             ? `- [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@${val})`
@@ -168,14 +162,16 @@ export default [
       type: 'text',
       name: 'youtube',
       message: 'Youtube Chanel ID:',
-      initial: config
-         .get('youtube')
-         .replace(
-            '- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@',
-            '',
-         )
-         .replace('- - ', '')
-         .slice(0, -1),
+      initial: config.get('youtube')
+         ? config
+              .get('youtube')
+              .replace(
+                 '- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@',
+                 '',
+              )
+              .replace('- - ', '')
+              .slice(0, -1)
+         : '',
       format: (val) =>
          val.trim() != ''
             ? `- [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@${val})`

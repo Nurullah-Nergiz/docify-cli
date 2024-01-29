@@ -16,7 +16,7 @@ const createReadmeFile = (answers) => {
          [
             ...answers,
             '\n',
-            'This project was generated with [Docify-Cli](https://www.npmjs.com/package/docify-cli).',
+            `This project was generated with [Docify-Cli](https://www.npmjs.com/package/${process.env.npm_package_name}).`,
          ].join('\n\n'),
       )
       setTimeout(() => {

@@ -1,7 +1,9 @@
-node_modules/**/*
+.vscode
+node_modules
 .npm
 .git
 .github
+
 
 
 package-lock.json
