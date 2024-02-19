@@ -56,7 +56,7 @@ const checkUpdate = async () => {
       })
       table.push(
          [
-            ` Update available! ${process.env.npm_package_version} → ${res.version}`,
+            `Update available! ${version} → ${res.version}`,
          ],
          [`Changelog: https://github.com/Nurullah-Nergiz/docify-cli`],
          [`Run "npm i -g docify-cli" to update.`],

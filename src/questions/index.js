@@ -2,12 +2,10 @@ import { getFormatBadge, getInitialBadge } from '../utils/badge.js'
 import defaultData from '../utils/defaultData.js'
 import { getFolderChoices } from '../utils/getFolderChoices.js'
 import getGitUsername from '../utils/getGitUserName.js'
-// @ts-ignore
-import Conf from 'conf'
+import config from '../utils/conf.js'
 
 const { description, name, author, dependencies, devDependencies, repository } =
    defaultData
-const config = new Conf({ projectName: 'Docify-cli' })
 
 /**
  * @type {import('inquirer').QuestionCollection}

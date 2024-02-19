@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import prompts from 'prompts'
 import questions from './questions/index.js'
 import createReadmeFile from './utils/writeReadmeFile.js'
-// @ts-ignore
-import Conf from 'conf'
+
 import checkUpdate from './libs/checkUpdate.js'
+import { setConfig } from './libs/setConfig.js'
 
 // App init
 export default async function init() {
@@ -13,18 +13,19 @@ export default async function init() {
 
    await checkUpdate()
 
-   const config = new Conf({ projectName: 'Docify-cli' })
    // console.log(config.get().usage)
 
    // @ts-ignore
    const res = await prompts(questions, {
-      onCancel: () => {process.exit()},
+      onCancel: () => {
+         process.exit()
+      },
       // @ts-ignore
       onSubmit: ({ name }, val) => {
-         config.set(name, val)
+         setConfig({ key: name, val })
       },
    })
-   
+
    console.clear()
    createReadmeFile(Object.values(res).filter((ans) => ans?.trim() != ''))
 }
