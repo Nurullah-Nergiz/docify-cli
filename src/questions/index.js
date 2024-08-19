@@ -112,10 +112,10 @@ export default [
    },
    {
       type: 'text',
-      name: 'twitter',
+      name: 'x',
       message: 'Twitter (X)',
-      initial: getInitialBadge('twitter'),
-      format: (val) => getFormatBadge('twitter', val),
+      initial: getInitialBadge('x'),
+      format: (val) => getFormatBadge('x', val),
    },
    {
       type: 'text',

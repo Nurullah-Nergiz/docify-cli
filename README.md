@@ -10,8 +10,8 @@ The Docify CLI README Generator is a powerful command-line tool meticulously des
 npx docify-cli
 ```
 
-![media/screenshot.jpeg](media/screenshot.jpeg)
-media/screenshot.jpeg
+![media/1706008202546.gif](media/1706008202546.gif)
+media/1706008202546.gif
 
 Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
@@ -21,15 +21,17 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 	chalk: ^5.3.0,
 	cli-table: ^0.3.11,
 	conf: ^12.0.0,
+	glob: ^11.0.0,
 	ora: ^7.0.1,
 	pnpm: ^8.14.2,
 	prompts: ^2.4.2,
-	semver: ^7.5.4
+	semver: ^7.5.4,
+	yargs: ^17.7.2,
 	
 ## Dependencies
 
  	@types/node: ^20.6.0,
-	@types/prompts: ^2.4.9
+	@types/prompts: ^2.4.9,
 	
 
 ---
@@ -42,11 +44,11 @@ Recommended NodeJS Version [v21.2.0](https://nodejs.org/dist/v21.2.0)
 
 - [![github Nurullah-Nergiz](https://img.shields.io/badge/-transparent?style=social&logo=github&logoColor=%2523FF0000&label=Nurullah-Nergiz&labelColor=000000&color=000000&link=https://github.com/Nurullah-Nergiz)](https://github.com/Nurullah-Nergiz)
 
-- [![twitter nurullahNergiz_](https://img.shields.io/badge/-transparent?style=social&logo=twitter&logoColor=%2523FF0000&label=nurullahNergiz_&labelColor=000000&color=000000&link=https://twitter.com/nurullahNergiz_)](https://twitter.com/nurullahNergiz_)
+- [![x nurullahNergiz_](https://img.shields.io/badge/-transparent?style=social&logo=x&logoColor=%2523FF0000&label=nurullahNergiz_&labelColor=000000&color=000000&link=https://x.com/nurullahNergiz_)](https://x.com/nurullahNergiz_)
 
-- [![linkedin nurullah-nergiz](https://img.shields.io/badge/-transparent?style=social&logo=linkedin&logoColor=%2523FF0000&label=nurullah-nergiz&labelColor=000000&color=000000&link=https://linkedin.com/in/nurullah-nergiz)](https://linkedin.com/in/nurullah-nergiz)
+- [![linkedin nurullah-nergiz/](https://img.shields.io/badge/-transparent?style=social&logo=linkedin&logoColor=%2523FF0000&label=nurullah-nergiz/&labelColor=000000&color=000000&link=https://linkedin.com/in/nurullah-nergiz/)](https://linkedin.com/in/nurullah-nergiz/)
 
-- [![medium nurullahnergiz](https://img.shields.io/badge/-transparent?style=social&logo=medium&logoColor=%2523FF0000&label=nurullahnergiz&labelColor=000000&color=000000&link=https://medium.com/nurullahnergiz)](https://medium.com/nurullahnergiz)
+- [![medium nurullahnergiz](https://img.shields.io/badge/-transparent?style=social&logo=medium&logoColor=%2523FF0000&label=nurullahnergiz&labelColor=000000&color=000000&link=https://medium.com/@nurullahnergiz)](https://medium.com/@nurullahnergiz)
 
 - [![youtube nurullah-nergiz](https://img.shields.io/badge/-transparent?style=social&logo=youtube&logoColor=%2523FF0000&label=nurullah-nergiz&labelColor=000000&color=000000&link=https://youtube.com/@nurullah-nergiz)](https://youtube.com/@nurullah-nergiz)
 
