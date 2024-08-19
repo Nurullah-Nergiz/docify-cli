@@ -2,12 +2,13 @@
 import conf from 'conf'
 
 const config = new conf({ projectName: 'Docify-cli' })
-const links = {
-   website:"",
+
+export const links = {
+   website: '',
    github: 'https://github.com/',
-   twitter: 'https://twitter.com/',
+   x: 'https://x.com/',
    linkedin: 'https://linkedin.com/in/',
-   medium: 'https://medium.com/',
+   medium: 'https://medium.com/@',
    youtube: 'https://youtube.com/@',
 }
 
@@ -24,6 +25,7 @@ export const getInitialBadge = (name) => {
          .replaceAll(')', '')
          .replaceAll(']', ' ')
          .split(' ')[0]
+         .replaceAll(links[name],"")
    else return ''
 }
 
@@ -33,11 +35,14 @@ export const getInitialBadge = (name) => {
  * @returns {String}
  */
 export const getFormatBadge = (name, val) => {
-   if (val.trim() != '')
-      return `- [![${name} ${val}](https://img.shields.io/badge/-transparent?style=social&logo=${name}&logoColor=%2523FF0000&label=${val}&labelColor=000000&color=000000&link=${
-         links[name] + val
-      })](${links[name] + val})`
-   else return ''
+   if (val.trim() != '') {
+      const link = links[name];
+      const value = val.replace(link,"")
+      
+      return `- [![${name} ${value}](https://img.shields.io/badge/-transparent?style=social&logo=${name}&logoColor=%2523FF0000&label=${value}&labelColor=000000&color=000000&link=${
+         link + value
+      })](${link + value})`
+   } else return ''
 }
 /* - [![youtube nurullah-nergiz](https://img.shields.io/badge/-transparent?style=social&logo=youtube&logoColor=%2523FF0000&label=nurullah-nergiz&labelColor=000000&color=000000&link=https://youtube.com/@nurullah-nergiznurullah-nergiz)]
  (https://youtube.com/@nurullah-nergiznurullah-nergiz) */

@@ -6,6 +6,8 @@ import config from '../utils/conf.js'
 
 const { description, name, author, dependencies, devDependencies, repository } =
    defaultData
+const folderChoices = await getFolderChoices()
+
 
 /**
  * @type {import('inquirer').QuestionCollection}
@@ -41,12 +43,13 @@ export default [
    },
    {
       type: () =>
-         getFolderChoices.length !== 0 ? 'autocompleteMultiselect' : null,
+         folderChoices.length !== 0 ? 'autocompleteMultiselect' : null,
       name: 'value',
       message: 'Select images to display',
-      choices: getFolderChoices,
+      choices: folderChoices,
       format: (val) => val.map((img) => `![${val}](${val})\n${val}`).join('\n'),
       initial: 0,
+      // fallback: "as",
    },
    {
       type: 'text',
