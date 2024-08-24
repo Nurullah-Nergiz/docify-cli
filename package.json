@@ -1,6 +1,6 @@
 {
    "name": "docify-cli",
-   "version": "1.0.7",
+   "version": "1.1.1",
    "description": "The Docify CLI README Generator is a powerful command-line tool meticulously designed to simplify the creation and maintenance of high-quality README files for your software projects. Crafting a comprehensive README is crucial for effectively conveying information about your project to potential users and contributors. With the Docify CLI README Generator, you can effortlessly streamline the README creation process, ensuring your projects boast professional and informative documentation. Dive into the world of seamless documentation with the Docify CLI README Generator, making project management and communication a breeze.",
    "main": "bin/index.js",
    "type": "module",
